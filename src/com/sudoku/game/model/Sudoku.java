@@ -1,5 +1,7 @@
 package com.sudoku.game.model;
 
+import com.sudoku.game.model.ui.SudokuColors;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -83,21 +85,21 @@ public class Sudoku {
                 if(tileChar != '-'){
                     tile.setFont(new Font("Arial", Font.BOLD, 24));
                     tile.setText(String.valueOf(tileChar));
-                    tile.setBackground(Color.LIGHT_GRAY);
+                    tile.setBackground(SudokuColors.GIVEN_NUMBER);
                 }else {
                     tile.setFont(new Font("Arial", Font.PLAIN, 24));
-                    tile.setBackground(Color.WHITE);
+                    tile.setBackground(SudokuColors.BACKGROUND);
                 }
 
                 if((r == 2 && c == 2) || (r == 2 && c == 5) || (r == 5 && c == 2) || (r == 5 && c == 5)){
-                    tile.setBorder(BorderFactory.createMatteBorder(1, 1, 5, 5, Color.DARK_GRAY));
+                    tile.setBorder(BorderFactory.createMatteBorder(1, 1, 3, 3, SudokuColors.GRID_LINE));
                 }
                 else if (r == 2 || r == 5){
-                    tile.setBorder(BorderFactory.createMatteBorder(1, 1, 5, 1, Color.DARK_GRAY));
+                    tile.setBorder(BorderFactory.createMatteBorder(1, 1, 3, 1, SudokuColors.GRID_LINE));
                 }else if (c == 2 || c == 5){
-                    tile.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 5, Color.DARK_GRAY));
+                    tile.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 3, SudokuColors.GRID_LINE));
                 }else {
-                    tile.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+                    tile.setBorder(BorderFactory.createLineBorder(SudokuColors.GRID_LINE));
                 }
 
                 tile.setFocusable(false);
@@ -134,7 +136,7 @@ public class Sudoku {
             button.setFont(new Font("Arial", Font.BOLD, 24));
             button.setText(String.valueOf(i));
             button.setFocusable(false);
-            button.setBackground(Color.WHITE);
+            button.setBackground(SudokuColors.BACKGROUND);
             buttonsPanel.add(button);
 
             button.addActionListener(new ActionListener() {
@@ -142,10 +144,10 @@ public class Sudoku {
                 public void actionPerformed(ActionEvent e) {
                     JButton button = (JButton) e.getSource();
                     if (numSelected != null){
-                        numSelected.setBackground(Color.WHITE);
+                        numSelected.setBackground(SudokuColors.BACKGROUND);
                     }
                     numSelected = button;
-                    numSelected.setBackground(Color.LIGHT_GRAY);
+                    numSelected.setBackground(SudokuColors.SELECTED);
                 }
             });
         }
